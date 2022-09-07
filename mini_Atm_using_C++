@@ -1,0 +1,106 @@
+#include<iostream>
+#include<conio.h>  //Mini ATM code
+
+using namespace std;
+
+//class accnt, mob, balance, pin, 
+class Atm{
+private:
+    long int accnt_no;
+    long int mob;
+    double balance;
+    int pin;
+public:
+    void setter(long int a_no,long int m_no, double b, int p)
+{
+    accnt_no = a_no;
+    mob = m_no;
+    balance = b;
+    pin = p;
+}   
+
+int get_accnt_no()
+{
+    return accnt_no;
+}
+int get_pin_no()
+{
+    return pin;
+}
+    void check_balance()
+    {
+        cout<<"Your Remaining Balance is:"<<balance;
+       
+    }
+    void deposit()
+    {   float b;
+        cout<<"Enter the amount:"<<endl;
+        cin>>b;
+        balance +=b;
+        cout<<"Total Amount is :"<<balance;
+    }
+    void cash_withdraw()
+    {
+        float b;
+        cout<<"Enter the amount bae!..";
+        cin>>b;
+        
+        if(balance>b)
+        {
+            cout<<"Collect your cash.\n";
+            balance-=b;
+            cout<<"Remaining amount is "<<balance;
+            
+        }
+        else cout<<"Less amount";
+        
+    }
+void user_details()
+{
+    cout<<"accnt_no:"<<accnt_no<<endl<<"mobile no"<<mob<<endl<<"balance_amt:"<<balance<<endl;
+    getch();
+}
+
+};
+int main()
+{
+    Atm obj;
+int ch;
+obj.setter(123456,123456,3600,7225);
+
+long int Accnt_no; int p;
+                cout<<"Enter Account Number:";
+                cin>>Accnt_no;
+                cout<<"Enter Pin";
+                cin>>p;
+                if(Accnt_no==obj.get_accnt_no() && p==obj.get_pin_no())
+                {
+                    while(1)
+                    {system("cls");
+cout<<"\n Hello User!.. \n";
+cout<<"1. check_balance\n";
+cout<<"2. cash_withdrawal\n";
+cout<<"3. cash_deposit\n";
+cout<<"4. exit()\n";
+cin>>ch;
+                        switch(ch)
+                        {
+                            case 1:obj.check_balance();getch();
+                            break;
+                            case 2: obj.cash_withdraw();    getch();                          
+                            break;
+                            case 3:obj.deposit();getch();
+                                break;
+                            case 4: exit(0);
+                            case 5:obj.user_details();getch();
+                            break;
+                            default:cout<<"Invalid Input\n";
+                            
+                        }
+                    }
+                }
+                else cout<<"Invalid Account Number or pin";
+
+                return 0;
+
+        }
